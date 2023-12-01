@@ -99,6 +99,11 @@ def ordered_crossover(parent1, parent2, starting_team, max_away_games):
         if child_template[i] is None:
             child_template[i] = teams.pop()
 
+    # Return parent if theres an issue
+    for i in range(len(child_template)):
+        if child_template[i] is None:
+            return parent1
+
     return child_template
 
 def swap_mutation(route, mutation_rate, starting_team, max_away_games):
@@ -144,12 +149,12 @@ def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, populatio
 def main():
     teams = [
         "Toronto Raptors", "Boston Celtics", "Brooklyn Nets", "New York Knicks", "Philadelphia 76ers", "Indiana Pacers",
-        "Chicago Bulls", "Miami Heat", "Atlanta Hawks", "Charlotte Hornets", "Cleveland Cavaliers", #"Detroit Pistons"
-        # "Orlando Magic", "Washington Wizards", "Denver Nuggets",
-        # "Minnesota Timberwolves", "Oklahoma City Thunder", "Portland Trail Blazers", "Utah Jazz",
-        # "Golden State Warriors", "Los Angeles Clippers", "Los Angeles Lakers", "Phoenix Suns",
-        # "Sacramento Kings", "Dallas Mavericks", "Houston Rockets", "Memphis Grizzlies", "New Orleans Pelicans",
-        # "San Antonio Spurs"
+        "Chicago Bulls", "Miami Heat", "Atlanta Hawks", "Charlotte Hornets", "Cleveland Cavaliers", "Detroit Pistons",
+        "Orlando Magic", "Washington Wizards", "Denver Nuggets",
+        "Minnesota Timberwolves", "Oklahoma City Thunder", "Portland Trail Blazers", "Utah Jazz",
+        "Golden State Warriors", "Los Angeles Clippers", "Los Angeles Lakers", "Phoenix Suns",
+        "Sacramento Kings", "Dallas Mavericks", "Houston Rockets", "Memphis Grizzlies", "New Orleans Pelicans",
+        "San Antonio Spurs"
     ]
     distance_matrix = generate_dummy_distance_matrix(len(teams))
     print(distance_matrix)
