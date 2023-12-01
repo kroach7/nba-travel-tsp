@@ -55,19 +55,35 @@ def brute_force_tsp(starting_team, max_away_games, teams, distance_matrix):
 
     return shortest_route, min_distance
 
-def create_initial_population(starting_team, max_away_games, team_count, population_size):
+def create_initial_population(starting_team, max_away_games, team_count, population_size, distance_matrix):
     population = []
+
     for _ in range(population_size):
-        # Generate a random route with the starting team at the correct intervals
-        route = [starting_team]  # Start with the starting team
-        remaining_teams = [i for i in range(team_count) if i != starting_team]
-        while len(remaining_teams) > max_away_games:
-            next_segment = random.sample(remaining_teams, max_away_games)
-            route.extend(next_segment + [starting_team])
-            remaining_teams = [team for team in remaining_teams if team not in next_segment]
-        route.extend(remaining_teams + [starting_team])
+        route = [starting_team]
+        remaining_teams = set(range(team_count)) - {starting_team}
+
+        while remaining_teams:
+            if len(route) % (max_away_games + 1) == 0:
+                # Time to return to the starting team
+                route.append(starting_team)
+            else:
+                # Choose the next team based on proximity
+                last_team = route[-1]
+                closest_teams = sorted(remaining_teams, key=lambda x: distance_matrix[last_team][x])
+                
+                # Introduce some randomness in selecting the next team
+                next_team = random.choice(closest_teams[:3])  # Choose among the three closest teams
+                route.append(next_team)
+                remaining_teams.remove(next_team)
+
+        # Ensure the route ends with the starting team
+        if route[-1] != starting_team:
+            route.append(starting_team)
+
         population.append(route)
+
     return population
+
 
 def calculate_fitness(route, distance_matrix):
     return 1 / calculate_total_distance(route, distance_matrix)
@@ -119,7 +135,7 @@ def swap_mutation(route, mutation_rate, starting_team, max_away_games):
 
 def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate):
     team_count = len(teams)
-    population = create_initial_population(starting_team, max_away_games, team_count, population_size)
+    population = create_initial_population(starting_team, max_away_games, team_count, population_size, distance_matrix)
     best_route_overall = None
     min_distance_overall = float('inf')
 
@@ -161,9 +177,6 @@ def read_distance_matrix(file_name, arenas):
     size = len(arenas)
     distance_matrix = [[0 for _ in range(size)] for _ in range(size)]
 
-    # Create a temporary mapping to find index for arenas
-    arena_to_index = {arena: i for i, arena in enumerate(arenas)}
-
     # Read the CSV file and populate the distance matrix
     with open(file_name, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -172,8 +185,14 @@ def read_distance_matrix(file_name, arenas):
             stadium2 = row['Stadium 2']
             distance = float(row['Distance (km)'])
 
-            if stadium1 in arena_to_index and stadium2 in arena_to_index:
-                i, j = arena_to_index[stadium1], arena_to_index[stadium2]
+            s1index, s2index = -1, -1
+            for i, stadium in enumerate(arenas):
+                if stadium1 == stadium:
+                    s1index = i
+                elif stadium2 == stadium:
+                    s2index = i
+
+                i, j = s1index, s2index
                 distance_matrix[i][j] = distance
                 distance_matrix[j][i] = distance 
 
