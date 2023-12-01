@@ -1,7 +1,8 @@
 import itertools
 import random
+import csv
 
-random.seed(10)
+# random.seed(10)
 
 def generate_dummy_distance_matrix(size):
     """Generate a symmetric distance matrix with random distances."""
@@ -145,18 +146,58 @@ def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, populatio
 
     return best_route_overall, min_distance_overall
 
+def read_arena_mapping(file_name):
+    team_to_arena = {}
+    with open(file_name, newline='', encoding='utf-8-sig') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            team_name = row['teamname']
+            arena_name = row['arena_name']
+            team_to_arena[team_name] = arena_name
+    return team_to_arena
+
+def read_distance_matrix(file_name, arenas):
+    # Initialize the distance matrix with zeros
+    size = len(arenas)
+    distance_matrix = [[0 for _ in range(size)] for _ in range(size)]
+
+    # Create a temporary mapping to find index for arenas
+    arena_to_index = {arena: i for i, arena in enumerate(arenas)}
+
+    # Read the CSV file and populate the distance matrix
+    with open(file_name, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            stadium1 = row['Stadium 1']
+            stadium2 = row['Stadium 2']
+            distance = float(row['Distance (km)'])
+
+            if stadium1 in arena_to_index and stadium2 in arena_to_index:
+                i, j = arena_to_index[stadium1], arena_to_index[stadium2]
+                distance_matrix[i][j] = distance
+                distance_matrix[j][i] = distance 
+
+    return distance_matrix
+
 
 def main():
+    team_to_arena = read_arena_mapping('arenas_list.csv')
     teams = [
         "Toronto Raptors", "Boston Celtics", "Brooklyn Nets", "New York Knicks", "Philadelphia 76ers", "Indiana Pacers",
         "Chicago Bulls", "Miami Heat", "Atlanta Hawks", "Charlotte Hornets", "Cleveland Cavaliers", "Detroit Pistons",
-        "Orlando Magic", "Washington Wizards", "Denver Nuggets",
+        "Orlando Magic", "Washington Wizards", "Denver Nuggets", "Milwaukee Bucks",
         "Minnesota Timberwolves", "Oklahoma City Thunder", "Portland Trail Blazers", "Utah Jazz",
         "Golden State Warriors", "Los Angeles Clippers", "Los Angeles Lakers", "Phoenix Suns",
         "Sacramento Kings", "Dallas Mavericks", "Houston Rockets", "Memphis Grizzlies", "New Orleans Pelicans",
         "San Antonio Spurs"
     ]
-    distance_matrix = generate_dummy_distance_matrix(len(teams))
+    arenas = [team_to_arena[team] for team in teams]
+    print(teams)
+    print(arenas)
+
+    # distance_matrix = generate_dummy_distance_matrix(len(teams))
+
+    distance_matrix = read_distance_matrix('nba_stadium_distances.csv', arenas)
     print(distance_matrix)
 
     starting_team = teams.index("Toronto Raptors")
@@ -165,8 +206,8 @@ def main():
     # shortest_tour, min_distance = brute_force_tsp(starting_team, max_away_games, teams, distance_matrix)
     
     population_size = 2000  # population size
-    generations = 50     # number of generations
-    mutation_rate = 0.3    # mutation rate
+    generations = 1000     # number of generations
+    mutation_rate = 0.2    # mutation rate
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
     print("Shortest Tour:", " -> ".join(teams[team] for team in shortest_tour))
