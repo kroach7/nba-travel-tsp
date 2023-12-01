@@ -57,9 +57,14 @@ def brute_force_tsp(starting_team, max_away_games, teams, distance_matrix):
 def create_initial_population(starting_team, max_away_games, team_count, population_size):
     population = []
     for _ in range(population_size):
-        route = [starting_team] + random.sample([i for i in range(team_count) if i != starting_team], team_count - 1)
-        for i in range(max_away_games, len(route), max_away_games + 1):
-            route.insert(i, starting_team)
+        # Generate a random route with the starting team at the correct intervals
+        route = [starting_team]  # Start with the starting team
+        remaining_teams = [i for i in range(team_count) if i != starting_team]
+        while len(remaining_teams) > max_away_games:
+            next_segment = random.sample(remaining_teams, max_away_games)
+            route.extend(next_segment + [starting_team])
+            remaining_teams = [team for team in remaining_teams if team not in next_segment]
+        route.extend(remaining_teams + [starting_team])
         population.append(route)
     return population
 
@@ -72,67 +77,69 @@ def select_parents(population, fitness):
     return random.choices(population, weights=selection_probs, k=2)
 
 def ordered_crossover(parent1, parent2, starting_team, max_away_games):
-    # Remove the starting team from parents
-    parent1_filtered = [team for team in parent1 if team != starting_team]
-    parent2_filtered = [team for team in parent2 if team != starting_team]
+    # Create a template for the child that places the starting team at the correct positions
+    child_template = [starting_team if i % (max_away_games + 1) == 0 else None for i in range(len(parent1))]
 
-    start, end = sorted(random.sample(range(len(parent1_filtered)), 2))
-    child_filtered = [None] * len(parent1_filtered)
-    child_filtered[start:end] = parent1_filtered[start:end]
+    # Create a set of all teams except the starting team
+    teams = set(range(len(parent1)))
+    teams.remove(starting_team)
 
-    filled = set(parent1_filtered[start:end])
-    position = end
-    for city in parent2_filtered:
-        if city not in filled:
-            if position >= len(child_filtered):
-                position = 0
-            child_filtered[position] = city
-            position += 1
+    # Fill in the child template with teams from parents, ensuring no duplicates
+    for i in range(1, len(parent1) - 1):
+        if child_template[i] is None:
+            if parent1[i] in teams:
+                child_template[i] = parent1[i]
+                teams.remove(parent1[i])
+            elif parent2[i] in teams:
+                child_template[i] = parent2[i]
+                teams.remove(parent2[i])
 
-    # Re-insert the starting team at the required intervals
-    child = [starting_team]
-    for i, team in enumerate(child_filtered):
-        child.append(team)
-        if (i + 1) % max_away_games == 0:
-            child.append(starting_team)
-    if child[-1] != starting_team:
-        child.append(starting_team)
+    # Fill any remaining positions with leftover teams
+    for i in range(1, len(parent1) - 1):
+        if child_template[i] is None:
+            child_template[i] = teams.pop()
 
-    return child
+    return child_template
 
-def swap_mutation(route, mutation_rate):
+def swap_mutation(route, mutation_rate, starting_team, max_away_games):
     new_route = route[:]
-    for i in range(len(new_route)):
+    for _ in range(len(new_route) * 2):
         if random.random() < mutation_rate:
-            swap_with = random.randint(0, len(new_route) - 1)
-            new_route[i], new_route[swap_with] = new_route[swap_with], new_route[i]
+            idx1, idx2 = random.sample(range(1, len(new_route) - 1), 2)
+            # Ensure these are not starting_team positions
+            if new_route[idx1] != starting_team and new_route[idx2] != starting_team:
+                new_route[idx1], new_route[idx2] = new_route[idx2], new_route[idx1]
     return new_route
 
 def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate):
     team_count = len(teams)
     population = create_initial_population(starting_team, max_away_games, team_count, population_size)
+    best_route_overall = None
+    min_distance_overall = float('inf')
 
-    for _ in range(generations):
+    for generation in range(generations):
         fitness = [calculate_fitness(route, distance_matrix) for route in population]
         new_population = []
+        
         for _ in range(population_size):
             parent1, parent2 = select_parents(population, fitness)
             child = ordered_crossover(parent1, parent2, starting_team, max_away_games)
-            child = swap_mutation(child, mutation_rate)
-            print(child)
+            child = swap_mutation(child, mutation_rate, starting_team, max_away_games)
             new_population.append(child)
+
         population = new_population
 
+        # Check for the best route in this generation
+        for route in population:
+            total_distance = calculate_total_distance(route, distance_matrix)
+            if total_distance < min_distance_overall:
+                best_route_overall = route
+                min_distance_overall = total_distance
 
-    shortest_route = None
-    min_distance = float('inf')
-    for route in population:
-        total_distance = calculate_total_distance(route, distance_matrix)
-        if total_distance < min_distance:
-            min_distance = total_distance
-            shortest_route= route
+        print(f"Generation {generation + 1}: Best Route = {best_route_overall}, Distance = {min_distance_overall}")
 
-    return shortest_route, min_distance
+    return best_route_overall, min_distance_overall
+
 
 def main():
     teams = [
@@ -153,8 +160,8 @@ def main():
     # shortest_tour, min_distance = brute_force_tsp(starting_team, max_away_games, teams, distance_matrix)
     
     population_size = 2000  # Increase population size
-    generations = 200     # Increase number of generations
-    mutation_rate = 0.5    # Adjust mutation rate as needed
+    generations = 50     # Increase number of generations
+    mutation_rate = 0.2    # Adjust mutation rate as needed
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
     print("Shortest Tour:", " -> ".join(teams[team] for team in shortest_tour))
