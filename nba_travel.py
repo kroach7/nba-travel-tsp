@@ -226,11 +226,12 @@ def main():
     
     population_size = 2000  # population size
     generations = 1000     # number of generations
-    mutation_rate = 0.2    # mutation rate
+    mutation_rate = 0.001    # mutation rate
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
     print("Shortest Tour:", " -> ".join(teams[team] for team in shortest_tour))
-    print("Minimum Total Distance:", min_distance)
+    print("\nShortest Tour Arenas:", " -> ".join(arenas[team] for team in shortest_tour))
+    print("\nMinimum Total Distance:", min_distance)
 
 if __name__ == '__main__':
     main()
