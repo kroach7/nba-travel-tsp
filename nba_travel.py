@@ -159,9 +159,9 @@ def main():
     
     # shortest_tour, min_distance = brute_force_tsp(starting_team, max_away_games, teams, distance_matrix)
     
-    population_size = 2000  # Increase population size
-    generations = 50     # Increase number of generations
-    mutation_rate = 0.2    # Adjust mutation rate as needed
+    population_size = 2000  # population size
+    generations = 50     # number of generations
+    mutation_rate = 0.3    # mutation rate
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
     print("Shortest Tour:", " -> ".join(teams[team] for team in shortest_tour))
