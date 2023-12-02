@@ -185,16 +185,15 @@ def read_distance_matrix(file_name, arenas):
             stadium2 = row['Stadium 2']
             distance = float(row['Distance (km)'])
 
-            s1index, s2index = -1, -1
-            for i, stadium in enumerate(arenas):
-                if stadium1 == stadium:
-                    s1index = i
-                elif stadium2 == stadium:
-                    s2index = i
+            # Find all indices for each stadium
+            s1indices = [i for i, stadium in enumerate(arenas) if stadium1 == stadium]
+            s2indices = [i for i, stadium in enumerate(arenas) if stadium2 == stadium]
 
-                i, j = s1index, s2index
-                distance_matrix[i][j] = distance
-                distance_matrix[j][i] = distance 
+            # Update the distances for all pairs of indices
+            for i in s1indices:
+                for j in s2indices:
+                    distance_matrix[i][j] = distance
+                    distance_matrix[j][i] = distance
 
     return distance_matrix
 
@@ -224,8 +223,8 @@ def main():
     
     # shortest_tour, min_distance = brute_force_tsp(starting_team, max_away_games, teams, distance_matrix)
     
-    population_size = 2000  # population size
-    generations = 1000     # number of generations
+    population_size = 1000  # population size
+    generations = 50     # number of generations
     mutation_rate = 0.001    # mutation rate
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
