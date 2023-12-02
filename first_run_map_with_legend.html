@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_abc135dae1d3aef2d253bf518b63246e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 150px; height: 120px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white; opacity: 0.9;
+     ">
+     &nbsp; <b>Legend</b> <br>
+     &nbsp; Tour #1 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:red"></i><br>
+     &nbsp; Tour #2 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:green"></i><br>
+     &nbsp; Tour #3 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:blue"></i><br>
+     &nbsp; Tour #4 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:orange"></i><br>
+     &nbsp; Tour #5 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:purple"></i><br>
+     &nbsp; Tour #6 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:brown"></i>
+</div>
+    
+            <div class="folium-map" id="map_abc135dae1d3aef2d253bf518b63246e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_abc135dae1d3aef2d253bf518b63246e = L.map(
+                "map_abc135dae1d3aef2d253bf518b63246e",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ed06904a13bc938dd1483f55bc4fb1d2 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+                tile_layer_ed06904a13bc938dd1483f55bc4fb1d2.addTo(map_abc135dae1d3aef2d253bf518b63246e);
+    
+            var marker_3ac550f94ed6b798da26e9b8ff80724f = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_eb3b465d357ff2f440c7357e8f896584 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aa67084fdd261bd05debc314bc140046 = $(`<div id="html_aa67084fdd261bd05debc314bc140046" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_eb3b465d357ff2f440c7357e8f896584.setContent(html_aa67084fdd261bd05debc314bc140046);
+            
+        
+
+        marker_3ac550f94ed6b798da26e9b8ff80724f.bindPopup(popup_eb3b465d357ff2f440c7357e8f896584)
+        ;
+
+        
+    
+    
+            marker_3ac550f94ed6b798da26e9b8ff80724f.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d91e6ab82d8fe3722949406cd51a2d4 = L.marker(
+                [39.901100400000004, -75.17201654615069],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_aed76a3cd50331414880c47156d6dd24 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5925736677970f7b758edce93eb0be44 = $(`<div id="html_5925736677970f7b758edce93eb0be44" style="width: 100.0%; height: 100.0%;">Stop 2: Wells Fargo Center (Philadelphia)</div>`)[0];
+                popup_aed76a3cd50331414880c47156d6dd24.setContent(html_5925736677970f7b758edce93eb0be44);
+            
+        
+
+        marker_9d91e6ab82d8fe3722949406cd51a2d4.bindPopup(popup_aed76a3cd50331414880c47156d6dd24)
+        ;
+
+        
+    
+    
+            marker_9d91e6ab82d8fe3722949406cd51a2d4.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c2d96c3ed45612efaf8b204bf238ea7 = L.marker(
+                [40.68251055, -73.97525186658912],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_b1934619800c76b001564419d4b3563d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae476587b181469eb8217457171c00f9 = $(`<div id="html_ae476587b181469eb8217457171c00f9" style="width: 100.0%; height: 100.0%;">Stop 3: Barclays Center</div>`)[0];
+                popup_b1934619800c76b001564419d4b3563d.setContent(html_ae476587b181469eb8217457171c00f9);
+            
+        
+
+        marker_3c2d96c3ed45612efaf8b204bf238ea7.bindPopup(popup_b1934619800c76b001564419d4b3563d)
+        ;
+
+        
+    
+    
+            marker_3c2d96c3ed45612efaf8b204bf238ea7.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29c95af583f5cb69775aa0245fedbcdf = L.marker(
+                [40.750512900000004, -73.99351594545152],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_ff4d742d3fdc77e1e895f0a8a9562593 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a98fc6f28c01bea7339ad9928fbdea42 = $(`<div id="html_a98fc6f28c01bea7339ad9928fbdea42" style="width: 100.0%; height: 100.0%;">Stop 4: Madison Square Garden</div>`)[0];
+                popup_ff4d742d3fdc77e1e895f0a8a9562593.setContent(html_a98fc6f28c01bea7339ad9928fbdea42);
+            
+        
+
+        marker_29c95af583f5cb69775aa0245fedbcdf.bindPopup(popup_ff4d742d3fdc77e1e895f0a8a9562593)
+        ;
+
+        
+    
+    
+            marker_29c95af583f5cb69775aa0245fedbcdf.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1860516805c370a05988c1a34ca538d = L.marker(
+                [38.8981883, -77.0209377602636],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_dcc252a3cc471557cd1bf1ff20aadfc6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a4411c5887471ce98c4247185b52d39d = $(`<div id="html_a4411c5887471ce98c4247185b52d39d" style="width: 100.0%; height: 100.0%;">Stop 5: Capital One Arena</div>`)[0];
+                popup_dcc252a3cc471557cd1bf1ff20aadfc6.setContent(html_a4411c5887471ce98c4247185b52d39d);
+            
+        
+
+        marker_d1860516805c370a05988c1a34ca538d.bindPopup(popup_dcc252a3cc471557cd1bf1ff20aadfc6)
+        ;
+
+        
+    
+    
+            marker_d1860516805c370a05988c1a34ca538d.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_521cbfbe49e3c7ed0dc470a6df1c5616 = L.marker(
+                [42.3662986, -71.06216222263835],
+                {"color": "red"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_720aeba3ec6a0cedf5ef232990a2e670 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2bd69ca89a55c54c04a73678117525e3 = $(`<div id="html_2bd69ca89a55c54c04a73678117525e3" style="width: 100.0%; height: 100.0%;">Stop 6: TD Garden</div>`)[0];
+                popup_720aeba3ec6a0cedf5ef232990a2e670.setContent(html_2bd69ca89a55c54c04a73678117525e3);
+            
+        
+
+        marker_521cbfbe49e3c7ed0dc470a6df1c5616.bindPopup(popup_720aeba3ec6a0cedf5ef232990a2e670)
+        ;
+
+        
+    
+    
+            marker_521cbfbe49e3c7ed0dc470a6df1c5616.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_594be44d00d004b4a077de99d440f210 = L.polyline(
+                [[43.64343375, -79.37907772483726], [39.901100400000004, -75.17201654615069], [40.68251055, -73.97525186658912], [40.750512900000004, -73.99351594545152], [38.8981883, -77.0209377602636], [42.3662986, -71.06216222263835], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_594be44d00d004b4a077de99d440f210.bindTooltip(
+                `<div>
+                     Tour #1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8a5b1f381a9186bf7b9efb864f0b781 = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_7023e388f71d896376ca267de589c628 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_54b88329fb5a43612dd54bae86dc6f03 = $(`<div id="html_54b88329fb5a43612dd54bae86dc6f03" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_7023e388f71d896376ca267de589c628.setContent(html_54b88329fb5a43612dd54bae86dc6f03);
+            
+        
+
+        marker_c8a5b1f381a9186bf7b9efb864f0b781.bindPopup(popup_7023e388f71d896376ca267de589c628)
+        ;
+
+        
+    
+    
+            marker_c8a5b1f381a9186bf7b9efb864f0b781.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e63a9a60b185eeb97787f17270563991 = L.marker(
+                [42.3409774, -83.05495452754165],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_8b080a9cf5994ecd2b39ec7aa25ec02b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fa9d653d8722721b953893d4f390c1a9 = $(`<div id="html_fa9d653d8722721b953893d4f390c1a9" style="width: 100.0%; height: 100.0%;">Stop 2: Little Caesars Arena</div>`)[0];
+                popup_8b080a9cf5994ecd2b39ec7aa25ec02b.setContent(html_fa9d653d8722721b953893d4f390c1a9);
+            
+        
+
+        marker_e63a9a60b185eeb97787f17270563991.bindPopup(popup_8b080a9cf5994ecd2b39ec7aa25ec02b)
+        ;
+
+        
+    
+    
+            marker_e63a9a60b185eeb97787f17270563991.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8c82c414e6b01b86ae07d3b7d992d2dc = L.marker(
+                [39.7639331, -86.15550794973416],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_ec5e0f633ab88fdc5e11a1902282ca25 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_96b88a1094bfa6eb40276929810cce8d = $(`<div id="html_96b88a1094bfa6eb40276929810cce8d" style="width: 100.0%; height: 100.0%;">Stop 3: Gainbridge Fieldhouse</div>`)[0];
+                popup_ec5e0f633ab88fdc5e11a1902282ca25.setContent(html_96b88a1094bfa6eb40276929810cce8d);
+            
+        
+
+        marker_8c82c414e6b01b86ae07d3b7d992d2dc.bindPopup(popup_ec5e0f633ab88fdc5e11a1902282ca25)
+        ;
+
+        
+    
+    
+            marker_8c82c414e6b01b86ae07d3b7d992d2dc.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_189fb58883b5c25f240636afa0356f17 = L.marker(
+                [41.88068305, -87.67418510441388],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_1a2d6f1ed515a08682bb5d853346a62e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b34492b8a816b3c4cc279ff4cf599a7d = $(`<div id="html_b34492b8a816b3c4cc279ff4cf599a7d" style="width: 100.0%; height: 100.0%;">Stop 4: United Center</div>`)[0];
+                popup_1a2d6f1ed515a08682bb5d853346a62e.setContent(html_b34492b8a816b3c4cc279ff4cf599a7d);
+            
+        
+
+        marker_189fb58883b5c25f240636afa0356f17.bindPopup(popup_1a2d6f1ed515a08682bb5d853346a62e)
+        ;
+
+        
+    
+    
+            marker_189fb58883b5c25f240636afa0356f17.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_910de53588e1cbf298d666f15e1a5ecc = L.marker(
+                [43.04500955, -87.91748710581575],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_d105160ca51a18b22d7715bc90ddec8a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_969518e5d888de35d256392d0f249e39 = $(`<div id="html_969518e5d888de35d256392d0f249e39" style="width: 100.0%; height: 100.0%;">Stop 5: Fiserv Forum</div>`)[0];
+                popup_d105160ca51a18b22d7715bc90ddec8a.setContent(html_969518e5d888de35d256392d0f249e39);
+            
+        
+
+        marker_910de53588e1cbf298d666f15e1a5ecc.bindPopup(popup_d105160ca51a18b22d7715bc90ddec8a)
+        ;
+
+        
+    
+    
+            marker_910de53588e1cbf298d666f15e1a5ecc.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ba64a522cd8b2635b15ad73388c84c6b = L.marker(
+                [44.979512650000004, -93.27609502567992],
+                {"color": "green"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_133b60ad5a09e65b81e06666f3f33389 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49612aa0b74b3a76a01dfcd4e967d4aa = $(`<div id="html_49612aa0b74b3a76a01dfcd4e967d4aa" style="width: 100.0%; height: 100.0%;">Stop 6: Target Center</div>`)[0];
+                popup_133b60ad5a09e65b81e06666f3f33389.setContent(html_49612aa0b74b3a76a01dfcd4e967d4aa);
+            
+        
+
+        marker_ba64a522cd8b2635b15ad73388c84c6b.bindPopup(popup_133b60ad5a09e65b81e06666f3f33389)
+        ;
+
+        
+    
+    
+            marker_ba64a522cd8b2635b15ad73388c84c6b.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b108f588b9926d6f2c408239474a9c26 = L.polyline(
+                [[43.64343375, -79.37907772483726], [42.3409774, -83.05495452754165], [39.7639331, -86.15550794973416], [41.88068305, -87.67418510441388], [43.04500955, -87.91748710581575], [44.979512650000004, -93.27609502567992], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_b108f588b9926d6f2c408239474a9c26.bindTooltip(
+                `<div>
+                     Tour #2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f2c31460d1523abab17d001096257d64 = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_b3de63dda06d4fe8dbba8d3134abebbf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_31f30131e6a387a5e7c13693190119a2 = $(`<div id="html_31f30131e6a387a5e7c13693190119a2" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_b3de63dda06d4fe8dbba8d3134abebbf.setContent(html_31f30131e6a387a5e7c13693190119a2);
+            
+        
+
+        marker_f2c31460d1523abab17d001096257d64.bindPopup(popup_b3de63dda06d4fe8dbba8d3134abebbf)
+        ;
+
+        
+    
+    
+            marker_f2c31460d1523abab17d001096257d64.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_09daf52724803695a6b3ba99e3f3bac4 = L.marker(
+                [35.225098, -80.83915411814897],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_8c4041b5a2813318b4b2618c75036152 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_924f24fb01a1732b682affeb1907fd8a = $(`<div id="html_924f24fb01a1732b682affeb1907fd8a" style="width: 100.0%; height: 100.0%;">Stop 2: Spectrum Center</div>`)[0];
+                popup_8c4041b5a2813318b4b2618c75036152.setContent(html_924f24fb01a1732b682affeb1907fd8a);
+            
+        
+
+        marker_09daf52724803695a6b3ba99e3f3bac4.bindPopup(popup_8c4041b5a2813318b4b2618c75036152)
+        ;
+
+        
+    
+    
+            marker_09daf52724803695a6b3ba99e3f3bac4.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6af74b4e6c0dc110448c6918e4f86009 = L.marker(
+                [33.7573698, -84.39638483503104],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_d613c2c4f21a17bfbff0decdc3eebbb4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_448b64fd2fb12cd53a04b0dc82a19c8c = $(`<div id="html_448b64fd2fb12cd53a04b0dc82a19c8c" style="width: 100.0%; height: 100.0%;">Stop 3: State Farm Arena</div>`)[0];
+                popup_d613c2c4f21a17bfbff0decdc3eebbb4.setContent(html_448b64fd2fb12cd53a04b0dc82a19c8c);
+            
+        
+
+        marker_6af74b4e6c0dc110448c6918e4f86009.bindPopup(popup_d613c2c4f21a17bfbff0decdc3eebbb4)
+        ;
+
+        
+    
+    
+            marker_6af74b4e6c0dc110448c6918e4f86009.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0bce852c30a8122d199c4551c9c2c244 = L.marker(
+                [28.53927385, -81.38400713924818],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_108b0211d0a20a535c60969ba486435f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8fbaa4cb5ac2c90958287f87bcb712a8 = $(`<div id="html_8fbaa4cb5ac2c90958287f87bcb712a8" style="width: 100.0%; height: 100.0%;">Stop 4: Amway Center</div>`)[0];
+                popup_108b0211d0a20a535c60969ba486435f.setContent(html_8fbaa4cb5ac2c90958287f87bcb712a8);
+            
+        
+
+        marker_0bce852c30a8122d199c4551c9c2c244.bindPopup(popup_108b0211d0a20a535c60969ba486435f)
+        ;
+
+        
+    
+    
+            marker_0bce852c30a8122d199c4551c9c2c244.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e29701d30a84ba8776cf1b30a1bf46ac = L.marker(
+                [25.781359549999998, -80.18794351626137],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_680949da1dbaf168ee62c3a61cc27d11 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7cb08c6b973bc80b2ab2c2ad27887874 = $(`<div id="html_7cb08c6b973bc80b2ab2c2ad27887874" style="width: 100.0%; height: 100.0%;">Stop 5: Kaseya Center</div>`)[0];
+                popup_680949da1dbaf168ee62c3a61cc27d11.setContent(html_7cb08c6b973bc80b2ab2c2ad27887874);
+            
+        
+
+        marker_e29701d30a84ba8776cf1b30a1bf46ac.bindPopup(popup_680949da1dbaf168ee62c3a61cc27d11)
+        ;
+
+        
+    
+    
+            marker_e29701d30a84ba8776cf1b30a1bf46ac.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eab119853f2e44ffd629120ecc739cb1 = L.marker(
+                [29.94903925, -90.08206899587637],
+                {"color": "blue"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_8f83d723b638cf02fafe82bc74faa372 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_00e63081a55b41a3dc7d7132a7c754b9 = $(`<div id="html_00e63081a55b41a3dc7d7132a7c754b9" style="width: 100.0%; height: 100.0%;">Stop 6: Smoothie King Center</div>`)[0];
+                popup_8f83d723b638cf02fafe82bc74faa372.setContent(html_00e63081a55b41a3dc7d7132a7c754b9);
+            
+        
+
+        marker_eab119853f2e44ffd629120ecc739cb1.bindPopup(popup_8f83d723b638cf02fafe82bc74faa372)
+        ;
+
+        
+    
+    
+            marker_eab119853f2e44ffd629120ecc739cb1.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_9c3d32111f4190458c57a3bb43f51768 = L.polyline(
+                [[43.64343375, -79.37907772483726], [35.225098, -80.83915411814897], [33.7573698, -84.39638483503104], [28.53927385, -81.38400713924818], [25.781359549999998, -80.18794351626137], [29.94903925, -90.08206899587637], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_9c3d32111f4190458c57a3bb43f51768.bindTooltip(
+                `<div>
+                     Tour #3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4a92971f555d0e901a41bb0b10a3f253 = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_36167b1736b4a8f625033b44498b74bb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e208a48bef2d16178115daff8b3336b = $(`<div id="html_2e208a48bef2d16178115daff8b3336b" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_36167b1736b4a8f625033b44498b74bb.setContent(html_2e208a48bef2d16178115daff8b3336b);
+            
+        
+
+        marker_4a92971f555d0e901a41bb0b10a3f253.bindPopup(popup_36167b1736b4a8f625033b44498b74bb)
+        ;
+
+        
+    
+    
+            marker_4a92971f555d0e901a41bb0b10a3f253.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35988b2780eb40def21fe7d04cf51f57 = L.marker(
+                [35.1382401, -90.05069457768097],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_63e5d9507333f284fe2fa644b688c1a8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c68888f25cfb86d2d629e732f7ce86d3 = $(`<div id="html_c68888f25cfb86d2d629e732f7ce86d3" style="width: 100.0%; height: 100.0%;">Stop 2: FedExForum</div>`)[0];
+                popup_63e5d9507333f284fe2fa644b688c1a8.setContent(html_c68888f25cfb86d2d629e732f7ce86d3);
+            
+        
+
+        marker_35988b2780eb40def21fe7d04cf51f57.bindPopup(popup_63e5d9507333f284fe2fa644b688c1a8)
+        ;
+
+        
+    
+    
+            marker_35988b2780eb40def21fe7d04cf51f57.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8b7f88184308ab8958593e45cf65901 = L.marker(
+                [32.7905076, -96.81027213460834],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_1f667b66c68da3c2a66e0d30abcc15f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f40261ce41918dfa205f11ec463d259 = $(`<div id="html_0f40261ce41918dfa205f11ec463d259" style="width: 100.0%; height: 100.0%;">Stop 3: American Airlines Center</div>`)[0];
+                popup_1f667b66c68da3c2a66e0d30abcc15f1.setContent(html_0f40261ce41918dfa205f11ec463d259);
+            
+        
+
+        marker_e8b7f88184308ab8958593e45cf65901.bindPopup(popup_1f667b66c68da3c2a66e0d30abcc15f1)
+        ;
+
+        
+    
+    
+            marker_e8b7f88184308ab8958593e45cf65901.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_212e6f857f277b8a492f490b65e9014e = L.marker(
+                [35.46339605, -97.51508150130435],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_682e8b4576f3e9b870bb63546fd2c6d1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_73a68b412516bb323c17b1f4c10ae75a = $(`<div id="html_73a68b412516bb323c17b1f4c10ae75a" style="width: 100.0%; height: 100.0%;">Stop 4: Paycom Center</div>`)[0];
+                popup_682e8b4576f3e9b870bb63546fd2c6d1.setContent(html_73a68b412516bb323c17b1f4c10ae75a);
+            
+        
+
+        marker_212e6f857f277b8a492f490b65e9014e.bindPopup(popup_682e8b4576f3e9b870bb63546fd2c6d1)
+        ;
+
+        
+    
+    
+            marker_212e6f857f277b8a492f490b65e9014e.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99889501722b34711a78233ff6174e00 = L.marker(
+                [29.4270504, -98.43750706398404],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_c9832388a5bd9a7991233c2196f53f23 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_95747c0c2013cf58f52c97b7b9acd720 = $(`<div id="html_95747c0c2013cf58f52c97b7b9acd720" style="width: 100.0%; height: 100.0%;">Stop 5: Frost Bank Center</div>`)[0];
+                popup_c9832388a5bd9a7991233c2196f53f23.setContent(html_95747c0c2013cf58f52c97b7b9acd720);
+            
+        
+
+        marker_99889501722b34711a78233ff6174e00.bindPopup(popup_c9832388a5bd9a7991233c2196f53f23)
+        ;
+
+        
+    
+    
+            marker_99889501722b34711a78233ff6174e00.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3461450b8a2b2e8f0756d314b973485 = L.marker(
+                [29.75074725, -95.36223151477087],
+                {"color": "orange"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_80e90788de9d479668907c7825890d0e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5c6894614297d74ed2ef52b008a6e64c = $(`<div id="html_5c6894614297d74ed2ef52b008a6e64c" style="width: 100.0%; height: 100.0%;">Stop 6: Toyota Center</div>`)[0];
+                popup_80e90788de9d479668907c7825890d0e.setContent(html_5c6894614297d74ed2ef52b008a6e64c);
+            
+        
+
+        marker_c3461450b8a2b2e8f0756d314b973485.bindPopup(popup_80e90788de9d479668907c7825890d0e)
+        ;
+
+        
+    
+    
+            marker_c3461450b8a2b2e8f0756d314b973485.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_4acf5c05f5311d6e9f55c8f389360210 = L.polyline(
+                [[43.64343375, -79.37907772483726], [35.1382401, -90.05069457768097], [32.7905076, -96.81027213460834], [35.46339605, -97.51508150130435], [29.4270504, -98.43750706398404], [29.75074725, -95.36223151477087], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_4acf5c05f5311d6e9f55c8f389360210.bindTooltip(
+                `<div>
+                     Tour #4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a476bc5dbe5bd3812d14a554b39e2e9 = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_565e1c739043502a02704d5276494d98 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f2e04b23586f5e98b0058cf5b1bbba0e = $(`<div id="html_f2e04b23586f5e98b0058cf5b1bbba0e" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_565e1c739043502a02704d5276494d98.setContent(html_f2e04b23586f5e98b0058cf5b1bbba0e);
+            
+        
+
+        marker_8a476bc5dbe5bd3812d14a554b39e2e9.bindPopup(popup_565e1c739043502a02704d5276494d98)
+        ;
+
+        
+    
+    
+            marker_8a476bc5dbe5bd3812d14a554b39e2e9.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d88123126384b4b786baca17abcf2b7 = L.marker(
+                [39.748683799999995, -105.00754401780362],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_3daab963216b5904cfd1cb74e9214f83 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3056e4bd954e4701370e539a86159d2e = $(`<div id="html_3056e4bd954e4701370e539a86159d2e" style="width: 100.0%; height: 100.0%;">Stop 2: Ball Arena</div>`)[0];
+                popup_3daab963216b5904cfd1cb74e9214f83.setContent(html_3056e4bd954e4701370e539a86159d2e);
+            
+        
+
+        marker_0d88123126384b4b786baca17abcf2b7.bindPopup(popup_3daab963216b5904cfd1cb74e9214f83)
+        ;
+
+        
+    
+    
+            marker_0d88123126384b4b786baca17abcf2b7.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4de59c84c6d6e29a6a754930b6763c7b = L.marker(
+                [33.4460392, -112.07110129629386],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_664f4831e5b9847d3d8307b986f70363 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_18c316321d5fc42884340e83e3eb9a6f = $(`<div id="html_18c316321d5fc42884340e83e3eb9a6f" style="width: 100.0%; height: 100.0%;">Stop 3: Footprint Center</div>`)[0];
+                popup_664f4831e5b9847d3d8307b986f70363.setContent(html_18c316321d5fc42884340e83e3eb9a6f);
+            
+        
+
+        marker_4de59c84c6d6e29a6a754930b6763c7b.bindPopup(popup_664f4831e5b9847d3d8307b986f70363)
+        ;
+
+        
+    
+    
+            marker_4de59c84c6d6e29a6a754930b6763c7b.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a168768d9a1d8a840676176a1dc46cf9 = L.marker(
+                [34.0429979, -118.2671352463293],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_46258d81ce1c1399c575d2a32321d622 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_151fc5ac3496c9601ffe784d7d94b99d = $(`<div id="html_151fc5ac3496c9601ffe784d7d94b99d" style="width: 100.0%; height: 100.0%;">Stop 4: Crypto.com Arena</div>`)[0];
+                popup_46258d81ce1c1399c575d2a32321d622.setContent(html_151fc5ac3496c9601ffe784d7d94b99d);
+            
+        
+
+        marker_a168768d9a1d8a840676176a1dc46cf9.bindPopup(popup_46258d81ce1c1399c575d2a32321d622)
+        ;
+
+        
+    
+    
+            marker_a168768d9a1d8a840676176a1dc46cf9.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fe4cecf6ab4f89a2d40997e0ca93d7b7 = L.marker(
+                [34.0429979, -118.2671352463293],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_331c0a0c34226359a13328037707275d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e94e14fca6bf17b65785099d2708968e = $(`<div id="html_e94e14fca6bf17b65785099d2708968e" style="width: 100.0%; height: 100.0%;">Stop 5: Crypto.com Arena</div>`)[0];
+                popup_331c0a0c34226359a13328037707275d.setContent(html_e94e14fca6bf17b65785099d2708968e);
+            
+        
+
+        marker_fe4cecf6ab4f89a2d40997e0ca93d7b7.bindPopup(popup_331c0a0c34226359a13328037707275d)
+        ;
+
+        
+    
+    
+            marker_fe4cecf6ab4f89a2d40997e0ca93d7b7.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c62ae5b8cb8886aecd0d85db6abbd439 = L.marker(
+                [37.767892700000004, -122.38740721330376],
+                {"color": "purple"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_f7827c8147b007314aba0187eb3fd19e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c072a4f54696c3271e484406534ea24d = $(`<div id="html_c072a4f54696c3271e484406534ea24d" style="width: 100.0%; height: 100.0%;">Stop 6: Chase Center</div>`)[0];
+                popup_f7827c8147b007314aba0187eb3fd19e.setContent(html_c072a4f54696c3271e484406534ea24d);
+            
+        
+
+        marker_c62ae5b8cb8886aecd0d85db6abbd439.bindPopup(popup_f7827c8147b007314aba0187eb3fd19e)
+        ;
+
+        
+    
+    
+            marker_c62ae5b8cb8886aecd0d85db6abbd439.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_6aed284feba22256a11bff46331bb801 = L.polyline(
+                [[43.64343375, -79.37907772483726], [39.748683799999995, -105.00754401780362], [33.4460392, -112.07110129629386], [34.0429979, -118.2671352463293], [34.0429979, -118.2671352463293], [37.767892700000004, -122.38740721330376], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_6aed284feba22256a11bff46331bb801.bindTooltip(
+                `<div>
+                     Tour #5
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_188c21487e55869d7c8193c1528d81b1 = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_92e6c1249eeb4efa895813fc78389da8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_096b250adc77632774ced1c3e6718bbd = $(`<div id="html_096b250adc77632774ced1c3e6718bbd" style="width: 100.0%; height: 100.0%;">Stop 1: Scotiabank Arena</div>`)[0];
+                popup_92e6c1249eeb4efa895813fc78389da8.setContent(html_096b250adc77632774ced1c3e6718bbd);
+            
+        
+
+        marker_188c21487e55869d7c8193c1528d81b1.bindPopup(popup_92e6c1249eeb4efa895813fc78389da8)
+        ;
+
+        
+    
+    
+            marker_188c21487e55869d7c8193c1528d81b1.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bbe5847995bbc565c78cef1bb08919fb = L.marker(
+                [40.76832735, -111.90105507486473],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_95748662f40cafbd4a840e2ba6ada212 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7be6c2a6c2d5515507e9901408e9bf64 = $(`<div id="html_7be6c2a6c2d5515507e9901408e9bf64" style="width: 100.0%; height: 100.0%;">Stop 2: Delta Center</div>`)[0];
+                popup_95748662f40cafbd4a840e2ba6ada212.setContent(html_7be6c2a6c2d5515507e9901408e9bf64);
+            
+        
+
+        marker_bbe5847995bbc565c78cef1bb08919fb.bindPopup(popup_95748662f40cafbd4a840e2ba6ada212)
+        ;
+
+        
+    
+    
+            marker_bbe5847995bbc565c78cef1bb08919fb.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_75305cc1e7e8855bed2566675c0cd812 = L.marker(
+                [38.58014045, -121.49950076409176],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_a2eddd27c45ed6edee59914badc02867 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6db4d9640c858b12b21e372251f740d8 = $(`<div id="html_6db4d9640c858b12b21e372251f740d8" style="width: 100.0%; height: 100.0%;">Stop 3: Golden 1 Center</div>`)[0];
+                popup_a2eddd27c45ed6edee59914badc02867.setContent(html_6db4d9640c858b12b21e372251f740d8);
+            
+        
+
+        marker_75305cc1e7e8855bed2566675c0cd812.bindPopup(popup_a2eddd27c45ed6edee59914badc02867)
+        ;
+
+        
+    
+    
+            marker_75305cc1e7e8855bed2566675c0cd812.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c60ed1401c4d798486e2734331148c56 = L.marker(
+                [45.5315787, -122.66683365218687],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_00319ee6da0db5eeecf3be21355894c2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_20fbd14b2ca73b9e5cb4913e03fc4006 = $(`<div id="html_20fbd14b2ca73b9e5cb4913e03fc4006" style="width: 100.0%; height: 100.0%;">Stop 4: Moda Center</div>`)[0];
+                popup_00319ee6da0db5eeecf3be21355894c2.setContent(html_20fbd14b2ca73b9e5cb4913e03fc4006);
+            
+        
+
+        marker_c60ed1401c4d798486e2734331148c56.bindPopup(popup_00319ee6da0db5eeecf3be21355894c2)
+        ;
+
+        
+    
+    
+            marker_c60ed1401c4d798486e2734331148c56.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78b1a4b74b59d4478a1489b79d168bc0 = L.marker(
+                [41.4966862, -81.68857538921003],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_dc8f2df65cd6c8ac738b48c0b67e745f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2fc39e8a62a9e29c3007170d78764009 = $(`<div id="html_2fc39e8a62a9e29c3007170d78764009" style="width: 100.0%; height: 100.0%;">Stop 5: Rocket Mortgage FieldHouse</div>`)[0];
+                popup_dc8f2df65cd6c8ac738b48c0b67e745f.setContent(html_2fc39e8a62a9e29c3007170d78764009);
+            
+        
+
+        marker_78b1a4b74b59d4478a1489b79d168bc0.bindPopup(popup_dc8f2df65cd6c8ac738b48c0b67e745f)
+        ;
+
+        
+    
+    
+            marker_78b1a4b74b59d4478a1489b79d168bc0.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e5976f9e3fd63657eee16b43111d28a = L.marker(
+                [43.64343375, -79.37907772483726],
+                {"color": "brown"}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+        var popup_2e5c33cea2a7c1ac79422f8fd68a2245 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_55d249ba240c4741dff2e695580aa3ff = $(`<div id="html_55d249ba240c4741dff2e695580aa3ff" style="width: 100.0%; height: 100.0%;">Stop 6: Scotiabank Arena</div>`)[0];
+                popup_2e5c33cea2a7c1ac79422f8fd68a2245.setContent(html_55d249ba240c4741dff2e695580aa3ff);
+            
+        
+
+        marker_9e5976f9e3fd63657eee16b43111d28a.bindPopup(popup_2e5c33cea2a7c1ac79422f8fd68a2245)
+        ;
+
+        
+    
+    
+            marker_9e5976f9e3fd63657eee16b43111d28a.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_8b74053c6c46397611561597df05d6cf = L.polyline(
+                [[43.64343375, -79.37907772483726], [40.76832735, -111.90105507486473], [38.58014045, -121.49950076409176], [45.5315787, -122.66683365218687], [41.4966862, -81.68857538921003], [43.64343375, -79.37907772483726], [43.64343375, -79.37907772483726]],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_abc135dae1d3aef2d253bf518b63246e);
+        
+    
+            poly_line_8b74053c6c46397611561597df05d6cf.bindTooltip(
+                `<div>
+                     Tour #6
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
