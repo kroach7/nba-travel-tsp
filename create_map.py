@@ -3,7 +3,7 @@ from geopy.geocoders import Nominatim
 
 # Define the list of arenas
 arenas = [
-"Scotiabank Arena","Capital One Arena","Wells Fargo Center (Philadelphia)","Barclays Center","Madison Square Garden","TD Garden","Scotiabank Arena","Little Caesars Arena","Fiserv Forum","United Center","Gainbridge Fieldhouse","Rocket Mortgage FieldHouse","Scotiabank Arena","Spectrum Center","Kaseya Center","Amway Center","State Farm Arena","FedExForum","Scotiabank Arena","Smoothie King Center","Toyota Center","Frost Bank Center","American Airlines Center","Paycom Center","Scotiabank Arena","Target Center","Ball Arena","Crypto.com Arena","Crypto.com Arena","Footprint Center","Scotiabank Arena","Moda Center","Chase Center","Golden 1 Center","Delta Center","Scotiabank Arena"
+"Scotiabank Arena","Capital One Arena","Wells Fargo Center (Philadelphia)","Madison Square Garden","Barclays Center","TD Garden","Scotiabank Arena","Rocket Mortgage FieldHouse","Gainbridge Fieldhouse","United Center","Fiserv Forum","Little Caesars Arena","Scotiabank Arena","Target Center","Moda Center","Golden 1 Center","Chase Center","Delta Center","Scotiabank Arena","Spectrum Center","Amway Center","Kaseya Center","Smoothie King Center","State Farm Arena","Scotiabank Arena","FedExForum","Toyota Center","Frost Bank Center","American Airlines Center","Paycom Center","Scotiabank Arena","Footprint Center","Crypto.com Arena","Crypto.com Arena","Ball Arena","Scotiabank Arena"
 ]
 
 # Initialize the geolocator

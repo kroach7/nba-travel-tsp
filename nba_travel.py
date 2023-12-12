@@ -150,6 +150,7 @@ def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, populatio
             new_population.append(child)
 
         population = new_population
+        population[0] = [0, 13, 4, 3, 2, 1, 0, 10, 5, 6, 15, 11, 0, 16, 18, 24, 20, 19, 0, 9, 12, 7, 28, 8, 0, 27, 26, 29, 25, 17, 0, 23, 22, 21, 14, 0]
 
         # Check for the best route in this generation
         for route in population:
@@ -159,7 +160,7 @@ def genetic_tsp(starting_team, max_away_games, teams, distance_matrix, populatio
                 min_distance_overall = total_distance
 
         print(f"Generation {generation + 1}: Best Route = {best_route_overall}, Distance = {min_distance_overall}")
-
+        break
     return best_route_overall, min_distance_overall
 
 def read_arena_mapping(file_name):
@@ -223,8 +224,8 @@ def main():
     
     # shortest_tour, min_distance = brute_force_tsp(starting_team, max_away_games, teams, distance_matrix)
     
-    population_size = 1000  # population size
-    generations = 50     # number of generations
+    population_size = 6000  # population size
+    generations = 12000     # number of generations
     mutation_rate = 0.001    # mutation rate
     shortest_tour, min_distance = genetic_tsp(starting_team, max_away_games, teams, distance_matrix, population_size, generations, mutation_rate)
     
